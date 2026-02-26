@@ -1,0 +1,8 @@
+echo "mkdir -p /etc/nginx/ssl && rm -rf /etc/nginx/sites-available.d/revers.conf"
+echo "scp -P 2026 sshuser@172.16.1.1:/raid/nfs/web.au-team.irpo.crt /etc/nginx/ssl/"
+echo "scp -P 2026 sshuser@172.16.1.1:/raid/nfs/docker.au-team.irpo.crt /etc/nginx/ssl/"
+echo "scp -P 2026 sshuser@172.16.1.1:/raid/nfs/web.au-team.irpo.key /etc/nginx/ssl/"
+echo "scp -P 2026 sshuser@172.16.1.1:/raid/nfs/docker.au-team.irpo.key /etc/nginx/ssl/"
+echo "cp /down/revers.conf1 /etc/nginx/sites-available.d/revers.conf"
+echo "Site https://web.au-team.irpo login:WEB password:P@ssw0rd"
+echo "Site https://docker.au-team.irpo"

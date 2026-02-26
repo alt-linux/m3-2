@@ -1,0 +1,11 @@
+echo "apt-get install openssl ca-certificate -y && mkdir -p /etc/pki/CA && mkdir -p /etc/pki/CA/private && mkdir -p /etc/pki/CA/certs && mkdir -p /etc/pki/CA/newcerts && mkdir -p /etc/pki/CA/crl && touch /etc/pki/CA/index.txt && echo 1000 > /etc/pki/CA/serial && chmod 700 /etc/pki/CA/private && mkdir -p /etc/ssl"
+echo "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
+echo 'openssl req -x509 -new -nodes -keyout /etc/pki/CA/private/ca.key -out /etc/pki/CA/certs/ca.crt -days 3650 -sha256 -subj "/CN=AU-TEAM Root CA" && openssl genrsa -out /etc/pki/CA/private/web.au-team.irpo.key 2048 && openssl genrsa -out /etc/pki/CA/private/docker.au-team.irpo.key 2048 && openssl req -new -key /etc/pki/CA/private/web.au-team.irpo.key -out /etc/pki/CA/newcerts/web.au-team.irpo.csr -subj "/CN=web.au-team.irpo" && openssl req -new -key /etc/pki/CA/private/docker.au-team.irpo.key -out /etc/pki/CA/newcerts/docker.au-team.irpo.csr -subj "/CN=docker-team.irpo"'
+echo "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
+echo "cp /down/web.cnf /etc/ssl/ && openssl ca -config /etc/ssl/web.cnf -in /etc/pki/CA/newcerts/web.au-team.irpo.csr -out /etc/pki/CA/certs/web.au-team.irpo.crt -extensions server_cert -batch && openssl ca -config /etc/ssl/web.cnf -in /etc/pki/CA/newcerts/docker.au-team.irpo.csr -out /etc/pki/CA/certs/docker.au-team.irpo.crt -extensions server_cert -batch && cp /etc/pki/CA/certs/ca.crt /raid/nfs && cp /etc/pki/CA/certs/web.au-team.irpo.crt /raid/nfs && cp /etc/pki/CA/private/web.au-team.irpo.key /raid/nfs && cp /etc/pki/CA/certs/docker.au-team.irpo.crt /raid/nfs && cp /etc/pki/CA/private/docker.au-team.irpo.key /raid/nfs && chmod 777 /raid/nfs/web.au-team.irpo.key && chmod 777 /raid/nfs/docker.au-team.irpo.key"
+echo "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
+echo "Na hq-cli v terminale roota pishem 2 commands"
+echo "cp /mnt/nfs/ca.crt /etc/pki/ca-trust/source/anchors"
+echo "update-ca-trust"
+echo "Zatem"
+echo "Na isp zaxod v root u bash m3-isp-2-2.sh"
